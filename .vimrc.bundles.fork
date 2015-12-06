@@ -1,0 +1,42 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
+"
+"   An assembly of various hunks of .vimrc files, tailored to my preferences
+"   and widely based on other people's .vimrc files, posts and guides.
+"
+" }
+
+" Bundles {{{
+
+    " General {{{
+        if count(g:spf13_bundle_groups, 'general')
+            Plugin 'sjl/badwolf'
+            Plugin 'zenorocha/dracula-theme',{'rtp':'vim/'}
+            Plugin 'KabbAmine/yowish.vim'
+            "Plugin 'flazz/vim-colorschemes'    " *A LOT* of color schemes
+            Plugin 'spf13/vim-autoclose'
+            Plugin 'VisIncr'
+        endif
+    " }}}
+
+
+    " General Programming {{{
+        if count(g:spf13_bundle_groups, 'programming')
+            Plugin 'editorconfig/editorconfig-vim'
+        endif
+    " }}}
+
+    " C/C++ {{{
+        if count(g:spf13_bundle_groups, 'c')
+            Plugin 'rhysd/vim-clang-format'
+        endif
+    " }}}
+
+    " Javascript {{{
+        if count(g:spf13_bundle_groups, 'javascript')
+            Plugin 'maksimr/vim-jsbeautify'
+            Plugin 'marijnh/tern_for_vim'
+        endif
+    " }}}
+
+" }}}
