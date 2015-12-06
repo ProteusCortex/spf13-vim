@@ -36,6 +36,27 @@
     set t_vb=
     set tm=500
 
+    " Check if the color scheme exists and use it
+    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) && has('gui_running')
+
+        " The various settings of the solarized theme
+        let g:solarized_termcolors=256          " The color palette used by the theme (*16 | 256)
+        let g:solarized_termtrans = 0           " Attempt to use transparent background
+        let g:solarized_degrade = 0             " Force Solarized to use the 256 degraded color mode
+        let g:solarized_bold = 1                " Allow bold characters
+        let g:solarized_underline = 1           " Allow underlined characters
+        let g:solarized_italic = 1              " Allow italic characters
+        let g:solarized_contrast = "normal"     " Color contrast (low | *normal | high)
+        let g:solarized_visibility= "normal"    " Color contrast for whitespace (low | *normal | high)
+
+        call togglebg#map("<F5>")               " Map a key to invert the background
+
+        colorscheme solarized                   " Set the default color scheme to Solarized
+    else
+        colorscheme peaksea                     " The desired colorscheme is not installed yet... :(
+                                                " (or this is not run using a GUI...)
+    endif
+
 " }}}
 
 " Formatting {{{
