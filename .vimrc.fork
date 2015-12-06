@@ -46,37 +46,37 @@
 
 " Key (re)Mappings {{{
 
-     " Easier moving in tabs and windows
-     " The lines conflict with the default digraph mapping of <C-K>
-     " (overrides spf13's mappings)
-     map <C-j> <C-W>j
-     map <C-k> <C-W>k
-     map <C-l> <C-W>l
-     map <C-h> <C-W>h
+    " Easier moving in tabs and windows
+    " The lines conflict with the default digraph mapping of <C-K>
+    " (overrides spf13's mappings)
+    map <C-j> <C-W>j
+    map <C-k> <C-W>k
+    map <C-l> <C-W>l
+    map <C-h> <C-W>h
 
-     " Maximize the current split
-     map <Leader>\| <C-W>\|
-     map <Leader>_ <C-W>_
+    " Maximize the current split
+    map <Leader>\| <C-W>\|
+    map <Leader>_ <C-W>_
 
-     " Visual mode pressing * or # searches for the current selection
-     " Super useful! From an idea by Michael Naumann
-     vnoremap <silent> * :call VisualSelection('f')<CR>
-     vnoremap <silent> # :call VisualSelection('b')<CR>
+    " Visual mode pressing * or # searches for the current selection
+    " Super useful! From an idea by Michael Naumann
+    vnoremap <silent> * :call VisualSelection('f')<CR>
+    vnoremap <silent> # :call VisualSelection('b')<CR>
 
-     " Delete all current buffers
-     map <Leader>ba :1, bd!<CR>
+    " Delete all current buffers
+    map <Leader>ba :1, bd!<CR>
 
-     " Useful mappings for managing tabs
-     map <Leader>tn :tabnew<CR>
-     map <Leader>to :tabonly<CR>
-     map <Leader>tc :tabclose<CR>
-     map <Leader>tm :tabmove<CR>
+    " Useful mappings for managing tabs
+    map <Leader>tn :tabnew<CR>
+    map <Leader>to :tabonly<CR>
+    map <Leader>tc :tabclose<CR>
+    map <Leader>tm :tabmove<CR>
 
-     " Remap VIM's 0 to first non-blank character
-     map 0 ^
+    " Remap VIM's 0 to first non-blank character
+    map 0 ^
 
-     " Remap <:> to <;> (saves you the Shift) :P
-     nnoremap ; :
+    " Remap <:> to <;> (saves you the Shift) :P
+    nnoremap ; :
 
 " }}}
 
@@ -147,12 +147,12 @@
 
     " vim-airline {{{
 
-        " Use powerline fonts only when using a GUI
-        if has('gui_running')
-            let g:airline_powerline_fonts = 1
-        endif
-
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+            " Use powerline fonts only when using a GUI
+            if has('gui_running')
+                let g:airline_powerline_fonts = 1
+            endif
+
             " Adjust various settings for vim-airline
             let g:airline_detect_modified = 1
             let g:airline_detect_paste = 1
@@ -191,12 +191,12 @@
 " GUI Settings {{{
 
     if has('gui_running')
-        set guioptions -= L         " Remove the left scrollbar
-        set guioptions -= r         " Remove the right scrollbar
-        set guioptions -= b         " Remove the bottom scrollbar
-        set guioptions += e
-        set guitablabel = %M\ %t
-        set lines = 55              " 55 lines of text instead of 24
+        set guioptions-=L           " Remove the left scrollbar
+        set guioptions-=r           " Remove the right scrollbar
+        set guioptions-=b           " Remove the bottom scrollbar
+        set guioptions+=e
+        set guitablabel=%M\ %t
+        set lines=55                " 55 lines of text instead of 24
                                     " (assuming that we all have tall screens)
 
         " Make sure that the audible bell is disabled
