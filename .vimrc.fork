@@ -1,0 +1,247 @@
+" Modeline and Notes {{{
+" vim: set sw=4 ts=4 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
+"
+"   An assembly of various hunks of .vimrc files, tailored to my preferences
+"   and widely based on other people's .vimrc files, posts and guides.
+"
+" }}}
+
+" General Preferences {{{
+
+    set ffs=unix,dos,mac  " Use Unix as the standard file type
+    set autoread            " Auto-read when a file is changed externally
+    set nospell             " Spell checking OFF by default
+
+" }}}
+
+" Vim UI {{{
+
+    set noshowmode          " Don't display the current mode (Airline does this instead)
+
+    " Make the 81st column stand out
+    highlight ColorColumn ctermbg=magenta
+    call matchadd('ColorColumn', '\%81v', 100)
+
+    " April Fool's stuff... >:D {{{
+        " highlight ColorColumn ctermbg=red ctermfg=blue
+        " exec 'set colorcolumn=' . join(range(2,80,3), ',')
+    " }}}
+
+    set lazyredraw          " Don't redraw while executing macros (performance)
+    set magic               " For regular expressions turn magic on
+
+    " No annoying sounds on error
+    set noerrorbells
+    set novisualbell
+    set t_vb=
+    set tm=500
+
+" }}}
+
+" Formatting {{{
+
+    set smarttab            " Be smart when using tabs ;)
+
+" }}}
+
+" Key (re)Mappings {{{
+
+     " Easier moving in tabs and windows
+     " The lines conflict with the default digraph mapping of <C-K>
+     " (overrides spf13's mappings)
+     map <C-j> <C-W>j
+     map <C-k> <C-W>k
+     map <C-l> <C-W>l
+     map <C-h> <C-W>h
+
+     " Maximize the current split
+     map <Leader>\| <C-W>\|
+     map <Leader>_ <C-W>_
+
+     " Visual mode pressing * or # searches for the current selection
+     " Super useful! From an idea by Michael Naumann
+     vnoremap <silent> * :call VisualSelection('f')<CR>
+     vnoremap <silent> # :call VisualSelection('b')<CR>
+
+     " Delete all current buffers
+     map <Leader>ba :1, bd!<CR>
+
+     " Useful mappings for managing tabs
+     map <Leader>tn :tabnew<CR>
+     map <Leader>to :tabonly<CR>
+     map <Leader>tc :tabclose<CR>
+     map <Leader>tm :tabmove<CR>
+
+     " Remap VIM's 0 to first non-blank character
+     map 0 ^
+
+     " Remap <:> to <;> (saves you the Shift) :P
+     nnoremap ; :
+
+" }}}
+
+" Plugin Preferences & stuff {{{
+
+    " YouCompleteMe {{{
+
+        if count(g:spf13_bundle_groups, 'youcompleteme')
+            " A global ycm_extra_conf, for files outside of projects
+            let g:ycm_global_ycm_extra_conf = "~/.ycm_extra_conf.py"
+
+            " DO NOT remap Ultisnips for compatibility with YCM
+            if exists('g:UltiSnipsExpandTrigger')
+                unlet g:UltiSnipsExpandTrigger
+            endif
+            if exists('g:UltiSnipsJumpForwardTrigger')
+                unlet g:UltiSnipsJumpForwardTrigger
+            endif
+            if exists('g:UltiSnipsJumpBackwardTrigger')
+                unlet g:UltiSnipsJumpBackwardTrigger
+            endif
+
+            " Increase the default required chars for completion to make YCM
+            " a little less annoying when typing various stuff
+            let g:ycm_min_num_of_chars_for_completion = 2
+
+            " Change the default list traverse keys
+            let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+            let g:ycm_key_list_select_previous_completion = ['<C-p>', '<Up>']
+
+            " Change the default warning symbol
+            let g:ycm_warning_symbol = '!>'
+
+            " Stop the annoying "Do you want to load this file?" prompts
+            let g:ycm_confirm_extra_conf = 0
+
+            " Modify omni completion for JavaScript to use TernJS
+            autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+    " }}}
+
+    " neocomplcache {{{
+
+        elseif count(g:spf13_bundle_groups, 'neocomplcache')
+            " Modify omni completion for JavaScript to use TernJS
+            autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+    " }}}
+
+    " Normal Vim omni-completion {{{
+
+        elseif !exists('g:spf13_no_omni_complete')
+            " Modify omni completion for JavaScript to use TernJS
+            autocmd FileType javascript setlocal omnifunc=tern#Complete
+
+        endif
+
+    " }}}
+
+    " UltiSnips {{{
+
+        " Make it behave more like TextMate
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<tab>"
+        let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+    " }}}
+
+    " vim-airline {{{
+
+        " Use powerline fonts only when using a GUI
+        if has('gui_running')
+            let g:airline_powerline_fonts = 1
+        endif
+
+        if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+            " Adjust various settings for vim-airline
+            let g:airline_detect_modified = 1
+            let g:airline_detect_paste = 1
+            let g:airline_detect_iminsert = 0
+            let g:airline_inactive_collapse = 1
+            let g:airline#extensions#bufferline#enabled = 1
+
+            let g:bufferline_echo = 0
+
+            " Disable mixed-indent warnings
+            let g:airline#extensions#whitespace#checks = ['trailing']
+
+            " Enable the tabline
+            let g:airline#extensions#tabline#enabled = 1
+        endif
+
+    " }}}
+
+    " CLang Format {{{
+        if isdirectory(expand("~/.vim/bundle/vim-clang-format/"))
+            nmap <Leader>ch :ClangFormat<CR>
+        endif
+    " }}}
+
+    " JS-Beautify {{{
+        if isdirectory(expand("~/.vim/bundle/vim-jsbeautify/"))
+            nmap <Leader>vh :call JsBeautify()<CR>
+            nmap <Leader>jh :call JsonBeautify()<CR>
+            nmap <Leader>hh :call HtmlBeautify()<CR>
+            nmap <Leader>sh :call CSSBeautify()<CR>
+        endif
+    " }}}
+
+" }}}
+
+" GUI Settings {{{
+
+    if has('gui_running')
+        set guioptions -= L         " Remove the left scrollbar
+        set guioptions -= r         " Remove the right scrollbar
+        set guioptions -= b         " Remove the bottom scrollbar
+        set guioptions += e
+        set guitablabel = %M\ %t
+        set lines = 55              " 55 lines of text instead of 24
+                                    " (assuming that we all have tall screens)
+
+        " Make sure that the audible bell is disabled
+        autocmd! GUIEnter * set vb t_vb=
+
+        " Override some spf13's font settings
+        if !exists("g:spf13_no_big_font")
+            if LINUX() && has("gui_running")
+                set guifont=Menlo\ for\ Powerline\ 9,Andale\ Mono\ Regular\ 9,Menlo\ Regular\ 9,Consolas\ Regular\ 9,Courier\ New\ Regular\ 9
+            elseif OSX() && has("gui_running")
+                set guifont=Menlo\ for\ Powerline,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+            elseif WINDOWS() && has("gui_running")
+                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+            endif
+        endif
+    endif
+
+" }}}
+
+" Extra syntax & stuff {{{
+
+    " Nginx conf syntax, indentation, ftdetect {{{
+        let nginx_syn=expand('~/.vim/syntax/nginx.vim')
+        if !filereadable(nginx_syn)
+            echo 'Installing Nginx syntax file...'
+            echo ''
+            silent !mkdir -p ~/.vim/syntax
+            silent !curl https://raw.githubusercontent.com/nginx/nginx/master/contrib/vim/syntax/nginx.vim -o ~/.vim/syntax/nginx.vim
+        endif
+
+        let nginx_ind=expand('~/.vim/indent/nginx.vim')
+        if !filereadable(nginx_ind)
+            echo 'Installing Nginx indent file...'
+            echo ''
+            silent !mkdir -p ~/.vim/indent
+            silent !curl https://raw.githubusercontent.com/nginx/nginx/master/contrib/vim/indent/nginx.vim -o ~/.vim/indent/nginx.vim
+        endif
+
+        let nginx_ftd=expand('~/.vim/ftdetect/nginx.vim')
+        if !filereadable(nginx_ftd)
+            echo 'Installing Nginx ftdetect file...'
+            echo ''
+            silent !mkdir -p ~/.vim/ftdetect
+            silent !curl https://raw.githubusercontent.com/nginx/nginx/master/contrib/vim/ftdetect/nginx.vim -o ~/.vim/ftdetect/nginx.vim
+        endif
+    " }}}
+
+" }}}
