@@ -147,12 +147,12 @@
 
     " vim-airline {{{
 
-        " Use powerline fonts only when using a GUI
-        if has('gui_running')
-            let g:airline_powerline_fonts = 1
-        endif
-
         if isdirectory(expand("~/.vim/bundle/vim-airline/"))
+            " Use powerline fonts only when using a GUI
+            if has('gui_running')
+                let g:airline_powerline_fonts = 1
+            endif
+
             " Adjust various settings for vim-airline
             let g:airline_detect_modified = 1
             let g:airline_detect_paste = 1
