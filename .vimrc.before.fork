@@ -1,0 +1,49 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
+"
+"   An assembly of various hunks of .vimrc files, tailored to my preferences
+"   and widely based on other people's .vimrc files, posts and guides.
+"
+" }
+
+" spf13 options {{{
+
+    " Prevent automatically changing to open file directory
+    let g:spf13_no_autochdir = 1
+
+    " Disable views
+    let g:spf13_no_views = 1
+
+    " Leader keys
+    let g:spf13_leader = '\'
+
+    " Disable easier moving in tabs and windows
+    " (I'm gonna use my variation here...)
+    let g:spf13_no_easyWindows = 1
+
+    " Disable wrap relative motion for start/end line motions
+    let g:spf13_no_wrapRelMotion = 1
+
+    " Disable fast tab navigation
+    let g:spf13_no_fastTabs = 1
+
+    " Clear search highlighting
+    let g:spf13_clear_search_highlight = 1
+
+    " Disable neosnippet expansion
+    " This maps over <C-k> and does some Supertab
+    " emulation with snippets
+    let g:spf13_no_neosnippet_expand = 1
+
+    " Disable whitespace stripping
+    "   let g:spf13_keep_trailing_whitespace = 1
+
+    " Enable powerline symbols only when using GUI
+    if has('gui_running')
+        let g:airline_powerline_fonts = 1
+    endif
+
+    " Override the default plugin group selection
+    let g:spf13_bundle_groups=['general', 'youcompleteme', 'programming', 'c', 'php', 'javascript', 'html', 'misc',]
+
+" }}}
