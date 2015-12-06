@@ -191,12 +191,12 @@
 " GUI Settings {{{
 
     if has('gui_running')
-        set guioptions -= L         " Remove the left scrollbar
-        set guioptions -= r         " Remove the right scrollbar
-        set guioptions -= b         " Remove the bottom scrollbar
-        set guioptions += e
-        set guitablabel = %M\ %t
-        set lines = 55              " 55 lines of text instead of 24
+        set guioptions-=L           " Remove the left scrollbar
+        set guioptions-=r           " Remove the right scrollbar
+        set guioptions-=b           " Remove the bottom scrollbar
+        set guioptions+=e
+        set guitablabel=%M\ %t
+        set lines=55                " 55 lines of text instead of 24
                                     " (assuming that we all have tall screens)
 
         " Make sure that the audible bell is disabled
