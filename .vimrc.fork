@@ -8,9 +8,10 @@
 
 " General Preferences {{{
 
-    set ffs=unix,dos,mac  " Use Unix as the standard file type
+    set ffs=unix,dos,mac    " Use Unix as the standard file type
     set autoread            " Auto-read when a file is changed externally
     set nospell             " Spell checking OFF by default
+    set wrap                " Wrap long lines!
 
 " }}}
 
