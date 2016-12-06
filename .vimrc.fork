@@ -237,33 +237,3 @@
     endif
 
 " }}}
-
-" Extra syntax & stuff {{{
-
-    " Nginx conf syntax, indentation, ftdetect {{{
-        let nginx_syn=expand('~/.vim/syntax/nginx.vim')
-        if !filereadable(nginx_syn)
-            echo 'Installing Nginx syntax file...'
-            echo ''
-            silent !mkdir -p ~/.vim/syntax
-            silent !curl https://raw.githubusercontent.com/nginx/nginx/master/contrib/vim/syntax/nginx.vim -o ~/.vim/syntax/nginx.vim
-        endif
-
-        let nginx_ind=expand('~/.vim/indent/nginx.vim')
-        if !filereadable(nginx_ind)
-            echo 'Installing Nginx indent file...'
-            echo ''
-            silent !mkdir -p ~/.vim/indent
-            silent !curl https://raw.githubusercontent.com/nginx/nginx/master/contrib/vim/indent/nginx.vim -o ~/.vim/indent/nginx.vim
-        endif
-
-        let nginx_ftd=expand('~/.vim/ftdetect/nginx.vim')
-        if !filereadable(nginx_ftd)
-            echo 'Installing Nginx ftdetect file...'
-            echo ''
-            silent !mkdir -p ~/.vim/ftdetect
-            silent !curl https://raw.githubusercontent.com/nginx/nginx/master/contrib/vim/ftdetect/nginx.vim -o ~/.vim/ftdetect/nginx.vim
-        endif
-    " }}}
-
-" }}}
