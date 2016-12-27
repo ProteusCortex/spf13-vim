@@ -18,6 +18,7 @@
 
             " Too many colorschemes. No need to load them.
             UnBundle 'flazz/vim-colorschemes'
+            UnBundle 'amirh/HTML-AutoCloseTag'
         endif
     " }}}
 
