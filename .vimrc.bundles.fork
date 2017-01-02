@@ -16,6 +16,9 @@
             Plugin 'spf13/vim-autoclose'
             Plugin 'VisIncr'
 
+            " Nginx syntax highlighting.
+            Plugin 'evanmiller/nginx-vim-syntax'
+
             " Too many colorschemes. No need to load them.
             UnBundle 'flazz/vim-colorschemes'
             UnBundle 'amirh/HTML-AutoCloseTag'
