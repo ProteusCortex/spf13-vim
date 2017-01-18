@@ -29,6 +29,7 @@
     " General Programming {{{
         if count(g:spf13_bundle_groups, 'programming')
             Plugin 'editorconfig/editorconfig-vim'
+            Plugin 'rdnetto/YCM-Generator'
         endif
     " }}}
 
