@@ -12,6 +12,7 @@
         if count(g:spf13_bundle_groups, 'general')
             Plugin 'sjl/badwolf'
             Plugin 'KabbAmine/yowish.vim'
+            Plugin 'morhetz/gruvbox'
             Plugin 'spf13/vim-autoclose'
             Plugin 'VisIncr'
 
@@ -21,6 +22,7 @@
             " Too many colorschemes. No need to load them.
             UnBundle 'flazz/vim-colorschemes'
             UnBundle 'amirh/HTML-AutoCloseTag'
+            UnBundle 'altercation/vim-colors-solarized'
         endif
     " }}}
 
