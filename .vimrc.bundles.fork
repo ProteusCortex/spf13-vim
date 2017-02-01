@@ -13,6 +13,7 @@
             Plugin 'sjl/badwolf'
             Plugin 'KabbAmine/yowish.vim'
             Plugin 'morhetz/gruvbox'
+            Plugin 'chriskempson/tomorrow-theme', {'rtp':'vim/'}
             Plugin 'spf13/vim-autoclose'
             Plugin 'VisIncr'
 
