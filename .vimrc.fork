@@ -195,12 +195,6 @@
         endif
     " }}}
 
-    " NerdTree {{{
-        if isdirectory(expand("~/.vim/bundle/nerdtree")) && has('gui_running')
-            let NERDTreeQuitOnOpen=0
-        endif
-    " }}}
-
 " }}}
 
 " GUI Settings {{{
