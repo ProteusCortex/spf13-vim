@@ -118,26 +118,6 @@
 
             " Stop the annoying "Do you want to load this file?" prompts
             let g:ycm_confirm_extra_conf = 0
-
-            " Modify omni completion for JavaScript to use TernJS
-            autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-    " }}}
-
-    " neocomplcache {{{
-
-        elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            " Modify omni completion for JavaScript to use TernJS
-            autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-    " }}}
-
-    " Normal Vim omni-completion {{{
-
-        elseif !exists('g:spf13_no_omni_complete')
-            " Modify omni completion for JavaScript to use TernJS
-            autocmd FileType javascript setlocal omnifunc=tern#Complete
-
         endif
 
     " }}}

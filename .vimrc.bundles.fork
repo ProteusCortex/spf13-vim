@@ -44,7 +44,6 @@
     " Javascript {{{
         if count(g:spf13_bundle_groups, 'javascript')
             Plugin 'maksimr/vim-jsbeautify'
-            Plugin 'marijnh/tern_for_vim'
         endif
     " }}}
 
