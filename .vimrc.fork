@@ -175,6 +175,15 @@
         endif
     " }}}
 
+    " Emmet {{{
+        if isdirectory(expand("~/.vim/bundle/emmet-vim/"))
+            let g:user_emmet_settings = {
+            \    'filter.commentAfter': ' <!-- /<%= attr(\"id\", \"#\") %><%= attr(\"class\", \".\") %> -->',
+            \    'html': { 'filters': 'html,c' }
+            \}
+        endif
+    " }}}
+
 " }}}
 
 " GUI Settings {{{
