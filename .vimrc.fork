@@ -178,8 +178,10 @@
     " Emmet {{{
         if isdirectory(expand("~/.vim/bundle/emmet-vim/"))
             let g:user_emmet_settings = {
-            \    'filter.commentAfter': ' <!-- /<%= attr(\"id\", \"#\") %><%= attr(\"class\", \".\") %> -->',
-            \    'html': { 'filters': 'html,c' }
+            \   'html': {
+            \       'filters': 'html,c',
+            \       'filter.commentAfter': ' <!-- /<%= attr(\"id\", \"#\") %><%= attr(\"class\", \".\") %> -->'
+            \   }
             \}
         endif
     " }}}
