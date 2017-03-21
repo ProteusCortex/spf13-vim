@@ -10,22 +10,27 @@
 
     " General {{{
         if count(g:spf13_bundle_groups, 'general')
-            Plugin 'sjl/badwolf'
-            Plugin 'KabbAmine/yowish.vim'
-            Plugin 'morhetz/gruvbox'
-            Plugin 'chriskempson/tomorrow-theme', {'rtp':'vim/'}
+            " Auto-close [, (, {, " and ' characters.
             Plugin 'spf13/vim-autoclose'
+
+            " Produce increasing/decreasing columns
+            " of numbers, dates, or days
             Plugin 'VisIncr'
 
             " Nginx syntax highlighting.
             Plugin 'evanmiller/nginx-vim-syntax'
+
+            " Some really nice colorschemes.
+            Plugin 'sjl/badwolf'
+            Plugin 'KabbAmine/yowish.vim'
+            Plugin 'morhetz/gruvbox'
+            Plugin 'chriskempson/tomorrow-theme', {'rtp':'vim/'}
 
             " Too many colorschemes. No need to load them.
             UnBundle 'flazz/vim-colorschemes'
             UnBundle 'altercation/vim-colors-solarized'
         endif
     " }}}
-
 
     " General Programming {{{
         if count(g:spf13_bundle_groups, 'programming')
@@ -42,6 +47,7 @@
 
     " Javascript {{{
         if count(g:spf13_bundle_groups, 'javascript')
+            " JS beautification.
             Plugin 'maksimr/vim-jsbeautify'
         endif
     " }}}
