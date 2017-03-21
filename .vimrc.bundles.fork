@@ -22,7 +22,6 @@
 
             " Too many colorschemes. No need to load them.
             UnBundle 'flazz/vim-colorschemes'
-            UnBundle 'amirh/HTML-AutoCloseTag'
             UnBundle 'altercation/vim-colors-solarized'
         endif
     " }}}
@@ -44,6 +43,16 @@
     " Javascript {{{
         if count(g:spf13_bundle_groups, 'javascript')
             Plugin 'maksimr/vim-jsbeautify'
+        endif
+    " }}}
+
+    " HTML {{{
+        if count(g:spf13_bundle_groups, 'html')
+            " Mustache & Handlebars syntax and abbreviations.
+            Plugin 'mustache/vim-mustache-handlebars'
+
+            " This creates more problems than it solves.
+            UnBundle 'amirh/HTML-AutoCloseTag'
         endif
     " }}}
 
