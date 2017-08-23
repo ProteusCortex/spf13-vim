@@ -118,6 +118,14 @@
 
             " Stop the annoying "Do you want to load this file?" prompts
             let g:ycm_confirm_extra_conf = 0
+
+            " Add Typescript triggers (if the bundle is used)
+            if count(g:spf13_bundle_groups, 'typescript')
+                if !exists('g:ycm_semantic_triggers')
+                    let g:ycm_semantic_triggers = {}
+                endif
+                let g:ycm_semantic_triggers['typescript'] = ['.']
+            endif
         endif
 
     " }}}
