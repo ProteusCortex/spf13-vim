@@ -38,24 +38,8 @@
     set tm=500
 
     " Check if the color scheme exists and use it
-    if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim")) && has('gui_running')
-
-        " The various settings of the solarized theme
-        let g:solarized_termcolors=256          " The color palette used by the theme (*16 | 256)
-        let g:solarized_termtrans = 0           " Attempt to use transparent background
-        let g:solarized_degrade = 0             " Force Solarized to use the 256 degraded color mode
-        let g:solarized_bold = 1                " Allow bold characters
-        let g:solarized_underline = 1           " Allow underlined characters
-        let g:solarized_italic = 1              " Allow italic characters
-        let g:solarized_contrast = "normal"     " Color contrast (low | *normal | high)
-        let g:solarized_visibility= "normal"    " Color contrast for whitespace (low | *normal | high)
-
-        call togglebg#map("<F5>")               " Map a key to invert the background
-
-        colorscheme solarized                   " Set the default color scheme to Solarized
-    else
-        colorscheme peaksea                     " The desired colorscheme is not installed yet... :(
-                                                " (or this is not run using a GUI...)
+    if filereadable(expand("~/.vim/bundle/gruvbox/colors/gruvbox.vim"))
+        colorscheme gruvbox                     " Set the default color scheme to Gruvbox
     endif
 
 " }}}
@@ -135,25 +119,13 @@
             " Stop the annoying "Do you want to load this file?" prompts
             let g:ycm_confirm_extra_conf = 0
 
-            " Modify omni completion for JavaScript to use TernJS
-            autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-    " }}}
-
-    " neocomplcache {{{
-
-        elseif count(g:spf13_bundle_groups, 'neocomplcache')
-            " Modify omni completion for JavaScript to use TernJS
-            autocmd FileType javascript setlocal omnifunc=tern#Complete
-
-    " }}}
-
-    " Normal Vim omni-completion {{{
-
-        elseif !exists('g:spf13_no_omni_complete')
-            " Modify omni completion for JavaScript to use TernJS
-            autocmd FileType javascript setlocal omnifunc=tern#Complete
-
+            " Add Typescript triggers (if the bundle is used)
+            if count(g:spf13_bundle_groups, 'typescript')
+                if !exists('g:ycm_semantic_triggers')
+                    let g:ycm_semantic_triggers = {}
+                endif
+                let g:ycm_semantic_triggers['typescript'] = ['.']
+            endif
         endif
 
     " }}}
@@ -189,6 +161,9 @@
 
             " Enable the tabline
             let g:airline#extensions#tabline#enabled = 1
+
+            " Force Gruvbox theme
+            let g:airline_theme = 'gruvbox'
         endif
 
     " }}}
@@ -205,6 +180,17 @@
             nmap <Leader>jh :call JsonBeautify()<CR>
             nmap <Leader>hh :call HtmlBeautify()<CR>
             nmap <Leader>sh :call CSSBeautify()<CR>
+        endif
+    " }}}
+
+    " Emmet {{{
+        if isdirectory(expand("~/.vim/bundle/emmet-vim/"))
+            let g:user_emmet_settings = {
+            \   'html': {
+            \       'filters': 'html,c',
+            \       'filter.commentAfter': ' <!-- /<%= attr(\"id\", \"#\") %><%= attr(\"class\", \".\") %> -->'
+            \   }
+            \}
         endif
     " }}}
 

@@ -10,25 +10,32 @@
 
     " General {{{
         if count(g:spf13_bundle_groups, 'general')
-            Plugin 'sjl/badwolf'
-            Plugin 'zenorocha/dracula-theme',{'rtp':'vim/'}
-            Plugin 'KabbAmine/yowish.vim'
+            " Auto-close [, (, {, " and ' characters.
             Plugin 'spf13/vim-autoclose'
+
+            " Produce increasing/decreasing columns
+            " of numbers, dates, or days
             Plugin 'VisIncr'
 
             " Nginx syntax highlighting.
-            Plugin 'evanmiller/nginx-vim-syntax'
+            Plugin 'rhowardiv/nginx-vim-syntax'
+
+            " Some really nice colorschemes.
+            Plugin 'sjl/badwolf'
+            Plugin 'KabbAmine/yowish.vim'
+            Plugin 'morhetz/gruvbox'
+            Plugin 'chriskempson/tomorrow-theme', {'rtp':'vim/'}
 
             " Too many colorschemes. No need to load them.
             UnBundle 'flazz/vim-colorschemes'
-            UnBundle 'amirh/HTML-AutoCloseTag'
+            UnBundle 'altercation/vim-colors-solarized'
         endif
     " }}}
-
 
     " General Programming {{{
         if count(g:spf13_bundle_groups, 'programming')
             Plugin 'editorconfig/editorconfig-vim'
+            Plugin 'rdnetto/YCM-Generator'
         endif
     " }}}
 
@@ -40,8 +47,31 @@
 
     " Javascript {{{
         if count(g:spf13_bundle_groups, 'javascript')
+            " JS beautification.
             Plugin 'maksimr/vim-jsbeautify'
-            Plugin 'marijnh/tern_for_vim'
+        endif
+    " }}}
+
+    " Typescript {{{
+        if count(g:spf13_bundle_groups, 'typescript')
+            " Syntax highlighting
+            Plugin 'leafgarland/typescript-vim'
+
+            " More syntax highlighting and DOM keywords
+            Plugin 'HerringtonDarkholme/yats.vim'
+
+            " More language services
+            Plugin 'Quramy/tsuquyomi'
+        endif
+    " }}}
+
+    " HTML {{{
+        if count(g:spf13_bundle_groups, 'html')
+            " Mustache & Handlebars syntax and abbreviations.
+            Plugin 'mustache/vim-mustache-handlebars'
+
+            " This creates more problems than it solves.
+            UnBundle 'amirh/HTML-AutoCloseTag'
         endif
     " }}}
 
