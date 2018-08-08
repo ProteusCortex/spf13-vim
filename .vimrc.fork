@@ -194,6 +194,12 @@
         endif
     " }}}
 
+    " Nerdtree {{{
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            let g:NERDTreeQuitOnOpen = 0
+        endif
+    " }}}
+
 " }}}
 
 " GUI Settings {{{
