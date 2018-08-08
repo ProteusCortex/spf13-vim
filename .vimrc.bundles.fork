@@ -46,7 +46,7 @@
         endif
     " }}}
 
-    " Javascript {{{
+    " JavaScript {{{
         if count(g:spf13_bundle_groups, 'javascript')
             " JS beautification.
             Plugin 'maksimr/vim-jsbeautify'
