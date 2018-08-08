@@ -194,6 +194,12 @@
         endif
     " }}}
 
+    " Nerdtree {{{
+        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+            let g:NERDTreeQuitOnOpen = 0
+        endif
+    " }}}
+
 " }}}
 
 " GUI Settings {{{
@@ -213,11 +219,11 @@
         " Override some spf13's font settings
         if !exists("g:spf13_no_big_font")
             if LINUX() && has("gui_running")
-                set guifont=Menlo\ for\ Powerline\ 9,Andale\ Mono\ Regular\ 9,Menlo\ Regular\ 9,Consolas\ Regular\ 9,Courier\ New\ Regular\ 9
+                set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 9,Ubuntu\ Mono\ Regular\ 10
             elseif OSX() && has("gui_running")
-                set guifont=Menlo\ for\ Powerline,Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+                set guifont=Menlo\ for\ Powerline,Menlo\ Regular:h11,Courier\ New\ Regular:h14
             elseif WINDOWS() && has("gui_running")
-                set guifont=Andale_Mono:h10,Menlo:h10,Consolas:h10,Courier_New:h10
+                set guifont=Menlo:h10,Consolas:h10,Courier_New:h10
             endif
         endif
     endif
