@@ -39,7 +39,7 @@
 
     " Check if the color scheme exists and use it
     if filereadable(expand("~/.vim/bundle/gruvbox/colors/gruvbox.vim"))
-        colorscheme gruvbox                     " Set the default color scheme to Gruvbox
+        colorscheme gruvbox " Set the default color scheme to Gruvbox
     endif
 
 " }}}
@@ -219,9 +219,9 @@
         " Override some spf13's font settings
         if !exists("g:spf13_no_big_font")
             if LINUX() && has("gui_running")
-                set guifont=Meslo\ LG\ S\ DZ\ for\ Powerline\ 9,Ubuntu\ Mono\ Regular\ 10
+                set guifont=Iosevka\ 9,Ubuntu\ Mono\ Regular\ 10
             elseif OSX() && has("gui_running")
-                set guifont=Menlo\ for\ Powerline,Menlo\ Regular:h11,Courier\ New\ Regular:h14
+                set guifont=Iosevka,Menlo\ Regular:h11,Courier\ New\ Regular:h14
             elseif WINDOWS() && has("gui_running")
                 set guifont=Menlo:h10,Consolas:h10,Courier_New:h10
             endif
